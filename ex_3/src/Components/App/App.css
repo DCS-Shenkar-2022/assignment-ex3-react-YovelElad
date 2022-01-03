@@ -1,0 +1,17 @@
+.App {
+    display: flex;
+    background-color: #E5E5E5;
+
+}
+
+.iconFrame {
+    width: 52px;
+    height: 52px;
+    background-color: #F86549;
+    border-radius: 30px;
+    justify-content: center;
+    margin-top: 30px;
+    margin-left: 9px;
+    border: white;
+    border: 2.10345px solid #FFFFFF;
+}

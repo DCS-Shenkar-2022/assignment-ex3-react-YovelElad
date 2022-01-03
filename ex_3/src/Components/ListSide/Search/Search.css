@@ -1,0 +1,44 @@
+form{
+    display: flex;
+}
+
+.searchBar {
+    border-radius: 30px;
+    /* background-color: antiquewhite; */
+    width: 326px;
+    height: 52px;
+    margin-top: 30px;
+    margin-left: 185px;
+    border: none;
+    padding-left: 30px;
+    /* position: relative; */
+}
+
+#searchIconFrame {
+    width: 52px;
+    height: 52px;
+    background-color: #F86549;
+    border-radius: 30px;
+    justify-content: center;
+    margin-top: 30px;
+    margin-left: 9px;
+    border:none
+}
+ 
+.SearchIcon {
+    display: block;
+    color: white;
+    /* position: absolute; */
+    margin-left: 8px;
+    margin-top: 8px;
+    /* background-color: wheat; */
+    
+}
+
+.inconFrame {
+    text-align: center;
+}
+
+
+
+

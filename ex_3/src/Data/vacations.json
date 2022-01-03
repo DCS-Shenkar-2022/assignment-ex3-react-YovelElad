@@ -1,0 +1,49 @@
+[
+    {
+        "id":1,
+        "name": "Phi Phi Islands",
+        "location": "Thailand",
+        "price": "$1,480",
+        "image": "src/Data/images/PhiPhiIsland.png"
+    },
+
+    {
+        "id":2,
+        "name": "Kudahuvadhoo Island",
+        "location": "Maldives",
+        "price": "$1,030",
+        "image": "src/Data/images/PhiPhiIsland.png"
+    },
+
+    {
+        "id":3,
+        "name": "GreeceVillage",
+        "location": "Maldives",
+        "price": "$1,480",
+        "image": "src/Data/images/PhiPhiIsland.png"
+    },
+
+    {
+        "id":4,
+        "name": "Kudahuvadhoo Island",
+        "location": "Maldives",
+        "price": "$1,480",
+        "image": "src/Data/images/PhiPhiIsland.png"
+    },
+
+    {
+        "id":5,
+        "name": "Phi Phi Islands",
+        "location": "Thailand",
+        "price": "$1,480",
+        "image": "src/Data/images/PhiPhiIsland.png"
+    },
+
+    {
+        "id":6,
+        "name": "Kudahuvadhoo Island",
+        "location": "Maldives",
+        "price": "$1,030",
+        "image": "src/Data/images/PhiPhiIsland.png"
+    }
+]
