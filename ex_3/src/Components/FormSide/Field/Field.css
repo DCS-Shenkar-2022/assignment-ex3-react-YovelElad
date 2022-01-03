@@ -1,0 +1,12 @@
+input {
+    width: 538px;
+    height: 35px;
+    background-color: #F6F7FB;
+    border: none;
+    margin-left: 40px;
+    z-index: 10;
+}
+
+label{
+    margin-left: 40px;
+}

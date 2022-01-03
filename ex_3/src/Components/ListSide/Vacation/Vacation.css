@@ -1,0 +1,94 @@
+.Card {
+    border-radius: 30px;
+    background-color: white;
+    width: 293px;
+    height: 261px;
+    display: block;
+    position: relative;
+}
+
+.Card img {
+    margin-top: 12.62px;
+    margin-left: 13.67px;
+}
+
+#deleteIcon {
+    /* color: white; */
+    /* position: absolute; */
+    
+}
+
+#locationIcon {
+    color: #FF6647;
+    margin-left: 10px;
+    /* margin-bottom: 22.86px; */
+    position: absolute;
+    top: 220px;
+    left: 0;
+
+}
+
+#editIconFrame {
+    position: absolute;
+    color: white;
+    bottom: 60.12px;
+    right: 61.79px;
+ 
+}
+
+#deleteIconFrame {
+    position: absolute;
+    color: white;
+    bottom: 60.12px;
+    right: 21.79px;
+    /* left: 235.45px; */
+}
+
+.icon {
+    color: white;
+    margin-left: -3px;
+    /* margin-right: 10px; */
+}
+
+h4 {
+    position: absolute;
+    font-size: 15.78px;
+    top: 173px;
+    left: 14px;
+    /* bottom: 44.64px; */
+    /* margin-top: -60px;
+    margin-left: 14.1px; */
+    /* font-family: 'Alef'; */
+    /* margin-right: 14px; */
+    /* position: absolute; */
+    /* top: -100px; */
+    /* display: block; */
+
+}
+
+h5 {
+    color: gray;
+    position: absolute;
+    left: 32px;
+    top: 200px;
+}
+
+h6{
+    position: absolute;
+    font-size: 14px;
+    color: #34A59F;
+    /* font-family: "Alef"; */
+    right: 13.26px;
+}
+ 
+.iconFrame {
+    width: 35px;
+    height: 35px;
+    background-color: #F86549;
+    border-radius: 30px;
+    justify-content: center;
+    margin-top: 30px;
+    margin-left: 9px;
+    border: white;
+    border: 3.10345px solid #FFFFFF;
+}

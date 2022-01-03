@@ -1,0 +1,44 @@
+
+.Form {
+    width: 618px;
+    height: 552px;
+    background-color: white;
+    margin-top: 114px;
+    border-radius: 30px;
+    position: relative;
+}
+
+
+
+h2 {
+    display: block;
+    text-align: center;
+}
+
+.formContent {
+    z-index: 1;
+}
+
+.formBackground {
+    position: absolute;
+    bottom: 0;
+    z-index: 0;
+    left: 161px;
+}
+
+#submmit {
+    width: 52px;
+    height: 52px;
+    position: absolute;
+    bottom: -25px;
+    /* top: 526px; */
+    left: 275px;
+    border: none;
+}
+
+.addIcon {
+    color: white;
+    /* display: block; */
+    width: 18px;
+    height: 18px;
+}

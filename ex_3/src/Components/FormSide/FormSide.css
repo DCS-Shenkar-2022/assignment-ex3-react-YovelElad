@@ -1,0 +1,9 @@
+.FormSide {
+    background-color: #E5E5E5;
+    /* padding-top: 50px; */
+    display: block;
+    width: 50%;
+    height: 100%;
+    justify-content: space-evenly;
+    display: flex;
+}
