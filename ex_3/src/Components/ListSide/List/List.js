@@ -11,44 +11,61 @@ class List extends Component {
     constructor(props) {
         super(props)
         this.eachVacation = this.eachVacation.bind(this);
+        this.passDetails = this.passDetails.bind(this);
+        this.add = this.add.bind(this);
+        this.nextId = this.nextId.bind(this);
+        this.delete = this.delete.bind(this);
 
 
         this.state = {
-            vacations: [
-                {
-                    id: 3,
-                    name: "Phi Phi",
-                    location: "Maldives",
-                    price: "$1,480",
-                    image: "src/Data/images/PhiPhiIsland.png"
-                },
-
-                {
-                    id: 3,
-                    name: "GreeceVillage",
-                    location: "Maldives",
-                    price: "$1,480",
-                    image: "src/Data/images/PhiPhiIsland.png"
-                },
-
-                {
-                    id: 3,
-                    name: "Tel Aviv",
-                    location: "Maldives",
-                    price: "$1,480",
-                    image: "src/Data/images/PhiPhiIsland.png"
-                },
-            ]
+            vacations: []
         }
     }
 
-    eachVacation(item,i) {
+    add({ _id = null, _name, _location, _price, _image }) {
+        // console.log(_id + " -> " + _name)
+        this.setState(prevState => ({
+            vacations: [
+                ...prevState.vacations, {
+                    id: _id !== null ? _id : this.nextId(prevState.vacations),
+                    name: _name,
+                    location: _location,
+                    price: _price,
+                    image: _image
+                }
+            ]
+        }))
+    }
+
+    delete(id) {
+        console.log("parant->" +id)
+        this.setState(prevState => ({
+            vacations: prevState.vacations.filter(vacation => vacation.id !== id)
+        }))
+    }
+
+    nextId(vacations = []) {
+        let max = vacations.reduce((prev, curr) => prev.id > curr.id ? prev.id : curr.id, 0);
+        return ++max;
+    }
+
+    componentDidMount() {
+        vacationsData.map(item => {
+            this.add({ _id: item.id, _name: item.name, _location: item.location, _price: item.price, _image: item.image })
+        });
+    }
+
+    passDetails = (editin,vacation) => {
+
+        this.props.callBack(editin,vacation)
+    }
+
+    eachVacation(item, i) {
         return (
-            <Vacation key={i}>
-                <h4>{item.name}</h4>
-                <h5>{item.location}</h5>
-                <h6>{item.price}</h6>
-                </Vacation>
+
+            <Vacation onEdit={this.passDetails} onDelete={this.delete} key={i} index={item.id} name={item.name} location={item.location} price={item.price} image={item.image}>
+
+            </Vacation>
         )
     }
     render() {
@@ -56,36 +73,7 @@ class List extends Component {
             <div className="List">
 
 
-                {vacationsData.map(this.eachVacation)}
-
-                {/* <Vacation>
-                    <h4>Phi Phi Islands</h4>
-                    <h5>Thailand</h5>
-                </Vacation>
-                <Vacation>
-                    <h4>Tel Aviv</h4>
-                    <h5>Thailand</h5>
-                </Vacation>
-                <Vacation>
-                    <h4>Tel Aviv</h4>
-                    <h5>Thailand</h5>
-                </Vacation>
-                <Vacation>
-                    <h4>Tel Aviv</h4>
-                    <h5>Thailand</h5>
-                </Vacation>
-                <Vacation>
-                    <h4>Tel Aviv</h4>
-                    <h5>Thailand</h5>
-                </Vacation>
-                <Vacation>
-                    <h4>Tel Aviv</h4>
-                    <h5>Thailand</h5>
-                </Vacation>
-                <Vacation>
-                    <h4>Tel Aviv</h4>
-                    <h5>Thailand</h5>
-                </Vacation> */}
+                {this.state.vacations.map(this.eachVacation)}
 
             </div>
             // <div>{this.props.children}</div>

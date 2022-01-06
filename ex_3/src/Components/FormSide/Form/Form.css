@@ -26,7 +26,7 @@ h2 {
     left: 161px;
 }
 
-#submmit {
+.formButton {
     width: 52px;
     height: 52px;
     position: absolute;
@@ -34,6 +34,20 @@ h2 {
     /* top: 526px; */
     left: 275px;
     border: none;
+}
+
+#submmit {
+    position: absolute;
+    left: 323px;
+}
+.plusIcon1{
+    position: absolute;
+    left: 25px;
+}
+
+#cancel {
+    position: absolute;
+    left: 243px;
 }
 
 .addIcon {

@@ -7,7 +7,17 @@
     position: relative;
 }
 
-.Card img {
+.editCard {
+    border-radius: 30px;
+    background-color:white;
+    border: 4.10345px solid #F86549;;
+    width: 293px;
+    height: 261px;
+    display: block;
+    position: relative;
+}
+
+.Card img , .editCard img{
     margin-top: 12.62px;
     margin-left: 13.67px;
 }
@@ -91,4 +101,10 @@ h6{
     margin-left: 9px;
     border: white;
     border: 3.10345px solid #FFFFFF;
+}
+
+.Vacation img {
+    width: 268px;
+    height: 170px;
+    border-radius: 25px;
 }

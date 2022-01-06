@@ -6,18 +6,25 @@ import './ListSide.css';
 class ListSide extends Component {
     constructor(props) {
         super(props);
+        this.passDetails = this.passDetails.bind(this);
 
       
+    }
+
+    passDetails = (editin,vacation) => {
+        // this.setState({data:vacation})
+        // alert(vacation.name + " " + vacation.location);
+        this.props.callBack(editin,vacation);
     }
     
     
     render() {
         return (
             <div className="ListSide" >
-                <Search>
+                <Search >
 
                 </Search>
-                <List>
+                <List callBack={this.passDetails}>
                     
                 </List>
             </div>
