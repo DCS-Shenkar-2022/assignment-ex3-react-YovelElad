@@ -14,12 +14,70 @@ class Form extends Component {
         super(props);
 
         this.state = {
-            editing: false
+            editing: false,
+            adding:false,
+
+            vacationId:3,
+
+            newId: null,
+            newName: null,
+            newLocation: null,
+            newPrice: null,
+            newImage:null
         }
 
         this.setState(prevState => ({
             editing: this.props.editing
         }))
+        this.saveName = this.saveName.bind(this);
+        this.saveLocation = this.saveLocation.bind(this);
+        this.savePrice = this.savePrice.bind(this);
+        this.saveImage = this.saveImage.bind(this);
+        this.add = this.add.bind(this);
+
+    }
+
+    saveName(_name) {
+        this.setState(prevState => ({
+            newName: _name
+        }))
+    }
+    saveLocation(_location) {
+        this.setState(prevState => ({
+            newLocation: _location
+        }))
+    }
+    savePrice(_price) {
+        this.setState(prevState => ({
+            newPrice: _price
+        }))
+    }
+    saveImage(_image) {
+        this.setState(prevState => ({
+            newImage: _image
+        }))
+    }
+ 
+    add = (e) => {
+        e.preventDefault();
+        this.setState(prevState => ({
+            adding: true
+        }))
+        // console.log(this.state);
+
+        this.props.onAdd(this.state);
+
+    } 
+
+    save = (e) => {
+        // alert(this.state.newLocation);
+        e.preventDefault();
+        this.setState({
+            editing: true,
+            vacationId: this.props.id
+        })
+        this.props.onUpdate(this.state)
+
     }
 
     render() {
@@ -27,14 +85,14 @@ class Form extends Component {
             return (
                 <div className="Form">
                     <h2>Edit a vacation</h2>
-                    <form>
+                    <form id="form">
                         <div className="formContent">
-                            <Field editing={this.props.editing} valueIn={this.props.name}>Name</Field>
-                            <Field editing={this.props.editing} valueIn={this.props.location}>Location</Field>
-                            <Field editing={this.props.editing} valueIn={this.props.price}>Price</Field>
-                            <Field editing={this.props.editing} valueIn={this.props.image}>Image url</Field>
+                            <Field editing={this.props.editing} valueIn={this.props.name} whenChange={this.saveName}>Name</Field>
+                            <Field editing={this.props.editing} valueIn={this.props.location} whenChange={this.saveLocation}>Location</Field>
+                            <Field editing={this.props.editing} valueIn={this.props.price} whenChange={this.savePrice}>Price</Field>
+                            <Field editing={this.props.editing} valueIn={this.props.image} whenChange={this.saveImage}>Image url</Field>
                             <button className="iconFrame formButton" id="cancel" ><img src={Xicon} /> </button>
-                            <button className="iconFrame formButton" id="submmit" type="submmit"><img src={Vicon} /> </button>
+                            <button className="iconFrame formButton" id="submmit" type="submmit" onClick={this.save}><img src={Vicon} /> </button>
 
                         </div>
                     </form>
@@ -47,13 +105,19 @@ class Form extends Component {
             return (
                 <div className="Form">
                     <h2>Add a new vacation</h2>
-                    <form>
+                    <form id="form">
                         <div className="formContent">
-                            <Field editing={this.props.editing} >Name</Field>
-                            <Field editing={this.props.editing} >Location</Field>
-                            <Field editing={this.props.editing} >Price</Field>
-                            <Field editing={this.props.editing}>Image url</Field>
-                            <button className="iconFrame formButton" id="addButton" type="submmit"><img src={plusIcon1} className="plusIcon1" /> <img src={plusIcon2} className="plusIcon2" /> </button>
+                            <Field editing={this.props.editing} whenChange={this.saveName}>Name</Field>
+                            <Field editing={this.props.editing} whenChange={this.saveLocation}>Location</Field>
+                            <Field editing={this.props.editing} whenChange={this.savePrice}>Price</Field>
+                            <Field editing={this.props.editing} whenChange={this.saveImage}>Image url</Field>
+                            <button className="iconFrame formButton"
+                                id="addButton"
+                                type="submmit"
+                                onClick={(e) => this.add(e)}
+                                >
+                                <img src={plusIcon1} className="plusIcon1" /> <img src={plusIcon2} className="plusIcon2" />
+                            </button>
                         </div>
                     </form>
                     <img className="formBackground" src={formBackground}></img>

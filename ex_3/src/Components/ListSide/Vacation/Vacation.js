@@ -43,13 +43,13 @@ class Vacation extends Component {
             this.setState(prevState => ({
                 editing: true
             }))
-            this.props.onEdit(true, this.state);
+            this.props.onEdit(true, false, this.state);
         }
         else {
             this.setState(prevState => ({
                 editing: false
             }))
-            this.props.onEdit(false, this.state);
+            this.props.onEdit(false, false, this.state);
         }
         // console.log("vacation state->", this.state.editing);
         // this.props.onEdit(this.state);
