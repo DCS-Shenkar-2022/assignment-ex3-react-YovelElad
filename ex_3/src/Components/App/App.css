@@ -1,6 +1,15 @@
+*{
+    /* font-family: 'Rubik', sans-serif; */
+    /* font-family: 'Courier New', Courier, monospace; */
+    /* font-family: 'Alef'; */
+
+}
+
+
 .App {
     display: flex;
     background-color: #E5E5E5;
+    
 
 }
 
@@ -14,4 +23,5 @@
     margin-left: 9px;
     border: white;
     border: 2.10345px solid #FFFFFF;
+    
 }

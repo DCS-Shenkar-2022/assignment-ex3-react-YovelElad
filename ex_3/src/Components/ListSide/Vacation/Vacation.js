@@ -8,6 +8,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import pic from '../../../Data/images/PhiPhiIsland.png';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import { ThirtyFpsSharp } from "@mui/icons-material";
 
 
 
@@ -15,36 +16,122 @@ class Vacation extends Component {
 
     constructor(props) {
         super(props)
+
+        this.state = {
+            editing: false,
+            id: props.index,
+            name: props.name,
+            location: props.location,
+            price: props.price,
+            image: props.image
+        }
+
+        this.edit = this.edit.bind(this);
+        this.delete = this.delete.bind(this);
+        this.renderCard = this.renderCard.bind(this);
+        this.renderEditCard = this.renderEditCard.bind(this);
+        this.componentDidMount = this.componentDidMount.bind(this);
+
+
+    }
+
+    componentDidMount() {
+        this.setState( prevState => ({
+            editing: false
+        }))
     }
 
 
-    render() {
+    edit(e) {
+        console.log("edit");
+        e.preventDefault();
+
+        // this.setState({ editing: true })
+        if (this.state.editing == false) {
+            this.setState(prevState => ({
+                editing: true
+            }))
+            // this.props.onEdit(true, false, this.state);
+            this.props.onEdit(this.state.id);
+        }
+        else {
+            this.setState(prevState => ({
+                editing: false
+            }))
+            // this.props.onEdit(false, false, this.state);
+            this.props.onEdit(this.state.id);
+
+        }
+        // console.log("vacation state->", this.state.editing);
+        // this.props.onEdit(this.state);
+    }
+
+    delete() {
+        console.log("Delete" + this.props.index);
+        this.props.onDelete(this.props.index);
+    }
+
+
+
+
+    renderCard() {
+
+
+
+
         return (
-            
+
             <div className="Vacation">
-
-
                 <div className="Card">
-                    <img src={pic}></img>
-                    
-                    <button id="editIconFrame" className="iconFrame" >
+                    <img src={this.props.image}></img>
+
+                    <button onClick={this.edit} id="editIconFrame" className="iconFrame" >
                         <EditIcon className="icon" fontSize="medium" />
                     </button>
-                    <button id="deleteIconFrame" className="iconFrame" >
+                    <button onClick={this.delete} id="deleteIconFrame" className="iconFrame" >
                         <DeleteIcon className="icon" fontSize="medium" />
                     </button>
-                    <div>{this.props.children}</div>
+                    <h4>{this.props.name}</h4>
+                    <h5>{this.props.location}</h5>
+                    <h6>{this.props.price}</h6>
+                    {/* <div>{this.props.children}</div> */}
                     {/* <h4>Phi Phi Islands</h4> */}
-                    <LocationOnIcon id="locationIcon"/>
+                    <LocationOnIcon id="locationIcon" />
                     {/* <h5>Thailand</h5> */}
                 </div>
-
-               
-
-               
             </div >
             // <div>{this.props.children}</div>
         )
+    }
+
+    renderEditCard() {
+        return (
+
+            <div className="Vacation">
+                <div className="editCard">
+                    <img src={this.props.image}></img>
+
+                    <button onClick={this.edit} id="editIconFrame" className="iconFrame" >
+                        <EditIcon className="icon" fontSize="medium" />
+                    </button>
+                    <button onClick={this.delete} id="deleteIconFrame" className="iconFrame" >
+                        <DeleteIcon className="icon" fontSize="medium" />
+                    </button>
+                    <h4>{this.props.name}</h4>
+                    <h5>{this.props.location}</h5>
+                    <h6>{this.props.price}</h6>
+                    {/* <div>{this.props.children}</div> */}
+                    {/* <h4>Phi Phi Islands</h4> */}
+                    <LocationOnIcon id="locationIcon" />
+                    {/* <h5>Thailand</h5> */}
+                </div>
+            </div >
+            // <div>{this.props.children}</div>
+        )
+    }
+
+    render() {
+        return this.state.editing && this.props.ApplicationState === "edit" ? this.renderEditCard() : this.renderCard();
     }
 }
 

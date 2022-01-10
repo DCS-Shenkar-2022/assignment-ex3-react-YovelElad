@@ -24,12 +24,17 @@ form{
     margin-left: 9px;
     border:none
 }
+button{
+    background-color: #E5E5E5;
+    border: none;
+
+}
  
 .SearchIcon {
     display: block;
     color: white;
     /* position: absolute; */
-    margin-left: 8px;
+    /* margin-left: 8px; */
     margin-top: 8px;
     /* background-color: wheat; */
     
