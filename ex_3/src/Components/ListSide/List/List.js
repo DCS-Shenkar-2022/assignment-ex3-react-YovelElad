@@ -12,14 +12,14 @@ class List extends Component {
     constructor(props) {
         super(props)
         this.eachVacation = this.eachVacation.bind(this);
-        this.passDetails = this.passDetails.bind(this);
+        // this.passDetails = this.passDetails.bind(this);
         // this.add = this.add.bind(this);
         this.nextId = this.nextId.bind(this);
         this.delete = this.delete.bind(this);
         // this.addFromForm = this.addFromForm.bind(this);
         // this.componentWillMount = this.componentWillMount.bind(this);
-        this.addNewVacation = this.addNewVacation.bind(this);
-        this.update = this.update.bind(this);
+        // this.addNewVacation = this.addNewVacation.bind(this);
+        // this.update = this.update.bind(this);
         this.edit = this.edit.bind(this);
         this.state = {
             adding: this.props.adding,
@@ -32,24 +32,24 @@ class List extends Component {
         this.props.onEdit(_id);
     }
 
-    addNewVacation(_name, _location, _price, _image) {
-        // console.log("add new vacationnnnnnnnnnnnnnnnnnnnnnnnn");
-        let { vacations } = this.state;
-        let newVacation = {
-            id: this.nextId(vacations),
-            name: _name,
-            location: _location,
-            price: _price,
-            image: _image
-        }
-        vacations.push(newVacation);
-        // this.setState(prevState => ({
-        //     adding: false
-        // }))
-        // this.delete(newVacation.id);
+    // addNewVacation(_name, _location, _price, _image) {
+    //     // console.log("add new vacationnnnnnnnnnnnnnnnnnnnnnnnn");
+    //     let { vacations } = this.state;
+    //     let newVacation = {
+    //         id: this.nextId(vacations),
+    //         name: _name,
+    //         location: _location,
+    //         price: _price,
+    //         image: _image
+    //     }
+    //     vacations.push(newVacation);
+    //     // this.setState(prevState => ({
+    //     //     adding: false
+    //     // }))
+    //     // this.delete(newVacation.id);
 
-        // this.setState({})
-    }
+    //     // this.setState({})
+    // }
 
     // add({ _id = null, _name, _location, _price, _image }) {
     //     // console.log(_id + " -> " + _name)
@@ -66,16 +66,16 @@ class List extends Component {
     //     }))
     // }
 
-    update(_id, _name, _location, _price, _image) {
-        // alert("update" , _id, " to name ", _name);
-        this.setState(prevState => ({
-            vacations: prevState.vacations.map(
-                vacation => vacation.id !== _id ? vacation : { ...vacation, name: _name }
-            )
-        }))
-        console.log(this.state.vacations);
-        alert("stop");
-    }
+    // update(_id, _name, _location, _price, _image) {
+    //     // alert("update" , _id, " to name ", _name);
+    //     this.setState(prevState => ({
+    //         vacations: prevState.vacations.map(
+    //             vacation => vacation.id !== _id ? vacation : { ...vacation, name: _name }
+    //         )
+    //     }))
+    //     console.log(this.state.vacations);
+    //     alert("stop");
+    // }
 
 
     delete(id) {
@@ -92,30 +92,30 @@ class List extends Component {
     //     this.setState(prevState => ({
     //         vacations: this.props.vacations
     //     }))
-        // vacationsData.map(item => {
-        //     this.add({ _id: item.id, _name: item.name, _location: item.location, _price: item.price, _image: item.image })
-        // });
-        // if (this.props.editin) {
-        //     this.update(this.props.updateId, this.props.updateNae, this.props.updateLocation, this.props.updatePrice, this.props.updateImage)
-        // }
-
-        // console.log("add from form ->", this.props.adding, this.props.newName);
-        // if (this.props.adding) {
-        //     this.add({ _id: null, _name: this.props.newName, _location: this.props.newLocation, _price: this.props.newPrice, _image: this.props.newImage })
-        // }
+    // vacationsData.map(item => {
+    //     this.add({ _id: item.id, _name: item.name, _location: item.location, _price: item.price, _image: item.image })
+    // });
+    // if (this.props.editin) {
+    //     this.update(this.props.updateId, this.props.updateNae, this.props.updateLocation, this.props.updatePrice, this.props.updateImage)
     // }
 
-    passDetails = (editin, adding, vacation) => {
-        this.setState(prevState => ({
-            adding: false
-        }))
-        this.props.callBack(editin, adding, vacation)
-    }
+    // console.log("add from form ->", this.props.adding, this.props.newName);
+    // if (this.props.adding) {
+    //     this.add({ _id: null, _name: this.props.newName, _location: this.props.newLocation, _price: this.props.newPrice, _image: this.props.newImage })
+    // }
+    // }
+
+    // passDetails = (editin, adding, vacation) => {
+    //     this.setState(prevState => ({
+    //         adding: false
+    //     }))
+    //     this.props.callBack(editin, adding, vacation)
+    // }
 
     eachVacation(item, i) {
         return (
 
-            <Vacation 
+            <Vacation
                 ApplicationState={this.props.ApplicationState}
                 onEdit={this.edit}
                 onDelete={this.delete}
@@ -124,15 +124,23 @@ class List extends Component {
                 name={item.name}
                 location={item.location}
                 price={item.price}
-                image={item.image}>
+                image={item.image}
+            />
 
-            </Vacation>
+
         )
     }
 
 
     render() {
         console.log(this.props.vacations);
+        if (this.props.vacations.length < 1) {
+            return (
+                <div className="List">
+                    <p id="noVacations">Sorry, we didn't find a vacation.</p>
+                </div>
+            )
+        }
         return (
             <div className="List">
 
@@ -142,57 +150,6 @@ class List extends Component {
         )
     }
 
-
-
-
-    // render() {
-    //     if (this.props.adding) {
-    //         // console.log(this.state.vacations);
-    //         this.addNewVacation(
-    //             this.props.newName,
-    //             this.props.newLocation,
-    //             this.props.newPrice,
-    //             this.props.newImage)
-    //         //    this.delete(7);
-    //         return (
-    //             <div className="List">
-    //                 {this.state.vacations.map(this.eachVacation)}
-    //             </div>
-    //             // break;
-    //         )
-    //     }
-    //     else {
-    //         // console.log(this.state.vacations);
-    //         if (this.props.searching) {
-    //             const filteredVacations = this.state.vacations.filter(
-    //                 vacation => {
-    //                     return (
-    //                         vacation.name.toLowerCase().includes(this.props.searchQuery.toLowerCase()) ||
-    //                         vacation.location.toLowerCase().includes(this.props.searchQuery.toLowerCase())
-    //                     )
-    //                 }
-    //             )
-    //             return (
-    //                 <div className="List">
-
-    //                     {filteredVacations.map(this.eachVacation)}
-
-    //                 </div>
-    //             )
-    //         }
-
-
-    //         return (
-    //             <div className="List">
-
-    //                 {this.state.vacations.map(this.eachVacation)}
-
-    //             </div>
-    //         )
-    //     }
-
-
-    // }
 }
 
 export default List;
