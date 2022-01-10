@@ -15,10 +15,10 @@ class Field extends Component {
         //     editing: this.props.editing
         // }))
 
-        this.someFunc = this.someFunc.bind(this);
+        this.saveChanges = this.saveChanges.bind(this);
     }
 
-    someFunc = (event) => {
+    saveChanges = (event) => {
         // const updatedKeyword = event.target.value;
         // console.log(event.target.value);
         event.preventDefault();
@@ -30,37 +30,81 @@ class Field extends Component {
 
 
     render() {
-        if (this.props.editing) {
-            // console.log("field editing");
-            return (
-                <div className="field">
-                    <label>{this.props.children}</label> <br />
-                    <input type="text"
-                        name={this.props.children}
-                        defaultValue={this.props.valueIn}
-                        className={this.props.children}
-                        onChange={(event) => this.someFunc(event)}
-                    />
-                    <br /><br />
-                </div>
-            )
-        }
-        else {
-            // console.log("field Not editing");
-            return (
-                <div className="field">
-                    <label>{this.props.children}</label> <br />
-                    <input type="text"
-                        name={this.props.children}
-                        defaultValue=""
-                        className={this.props.children}
-                        placeholder={this.props.children} 
-                        onChange={(event) => this.someFunc(event)}/>
-                    <br /><br />
-                </div>
-            )
+        switch (this.props.ApplicationState) {
+            case "none":
+                return (
+                    <div className="field">
+                        <label>{this.props.children}</label> <br />
+                        <input type="text"
+                            name={this.props.children}
+                            defaultValue=""
+                            className={this.props.children}
+                            placeholder={this.props.children} 
+                            onChange={(event) => this.saveChanges(event)}/>
+                        <br /><br />
+                    </div>
+                )
+                
+                // break;
+                case "edit":
+                    return (
+                        <div className="field">
+                            <label>{this.props.children}</label> <br />
+                            <input type="text"
+                                name={this.props.children}
+                                defaultValue={this.props.valueIn}
+                                className={this.props.children}
+                                onChange={(event) => this.saveChanges(event)}
+                            />
+                            <br /><br />
+                        </div>
+                    )
+        
+            default:
+                break;
         }
     }
+
+
+
+
+
+
+
+
+
+    // render() {
+    //     if (this.props.editing) {
+    //         // console.log("field editing");
+            // return (
+            //     <div className="field">
+            //         <label>{this.props.children}</label> <br />
+            //         <input type="text"
+            //             name={this.props.children}
+            //             defaultValue={this.props.valueIn}
+            //             className={this.props.children}
+            //             onChange={(event) => this.someFunc(event)}
+            //         />
+            //         <br /><br />
+            //     </div>
+            // )
+    //     }
+    //     else {
+    //         // console.log("field Not editing");
+            // return (
+            //     <div className="field">
+            //         <label>{this.props.children}</label> <br />
+            //         <input type="text"
+            //             name={this.props.children}
+            //             defaultValue=""
+            //             className={this.props.children}
+            //             placeholder={this.props.children} 
+            //             onChange={(event) => this.someFunc(event)}/>
+            //         <br /><br />
+            //     </div>
+            // )
+    //     }
+    // }
 }
 
 export default Field;

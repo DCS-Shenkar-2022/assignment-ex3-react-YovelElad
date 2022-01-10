@@ -30,7 +30,15 @@ class Vacation extends Component {
         this.delete = this.delete.bind(this);
         this.renderCard = this.renderCard.bind(this);
         this.renderEditCard = this.renderEditCard.bind(this);
+        this.componentDidMount = this.componentDidMount.bind(this);
 
+
+    }
+
+    componentDidMount() {
+        this.setState( prevState => ({
+            editing: false
+        }))
     }
 
 
@@ -43,13 +51,16 @@ class Vacation extends Component {
             this.setState(prevState => ({
                 editing: true
             }))
-            this.props.onEdit(true, false, this.state);
+            // this.props.onEdit(true, false, this.state);
+            this.props.onEdit(this.state.id);
         }
         else {
             this.setState(prevState => ({
                 editing: false
             }))
-            this.props.onEdit(false, false, this.state);
+            // this.props.onEdit(false, false, this.state);
+            this.props.onEdit(this.state.id);
+
         }
         // console.log("vacation state->", this.state.editing);
         // this.props.onEdit(this.state);
@@ -64,6 +75,10 @@ class Vacation extends Component {
 
 
     renderCard() {
+
+
+
+
         return (
 
             <div className="Vacation">
@@ -116,7 +131,7 @@ class Vacation extends Component {
     }
 
     render() {
-        return this.state.editing ? this.renderEditCard() : this.renderCard();
+        return this.state.editing && this.props.ApplicationState === "edit" ? this.renderEditCard() : this.renderCard();
     }
 }
 
