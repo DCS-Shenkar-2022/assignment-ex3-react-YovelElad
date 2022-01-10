@@ -10,7 +10,7 @@ class FormSide extends Component {
         super(props)
 
         this.state = {
-            editing: false,
+            // editing: false,
 
             ApplicationState: props.ApplicationState
         }
@@ -49,15 +49,6 @@ class FormSide extends Component {
         if (document.getElementById("form"))
             document.getElementById("form").reset();
         switch (this.props.ApplicationState) {
-            case "none":
-                return (
-                    <div className="FormSide">
-                        <Form
-                            ApplicationState={this.props.ApplicationState}
-                            onAdd={this.add}
-                        />
-                    </div>
-                )
             case "edit":
                 // alert(this.props.vacationToEdit.name);
                 return (
@@ -71,39 +62,17 @@ class FormSide extends Component {
                 )
 
             default:
+                return (
+                    <div className="FormSide">
+                        <Form
+                            ApplicationState={this.props.ApplicationState}
+                            onAdd={this.add}
+                        />
+                    </div>
+                )
                 break;
         }
     }
-
-
-
-    //     render() {
-    //         if (this.props.editing) {
-    //             return (
-    //                 <div className="FormSide">
-    //                     <Form 
-    //                         id={this.props.id}
-    //                         name={this.props.name}
-    //                         location={this.props.location}
-    //                         price={this.props.price}
-    //                         image={this.props.image}
-    //                         editing={this.props.editing}
-    //                         onAdd={this.add}
-    //                         onUpdate={this.update}
-    //                     ></Form>
-    //                 </div>
-    //             )
-    //         }
-    //         else {
-    //             return (
-    //                 <div className="FormSide">
-    //                     <Form editing={this.props.editing}
-    //                         onAdd={this.add}></Form>
-    //                 </div>
-    //             )
-    //         }
-
-    //     }
 }
 
 export default FormSide;

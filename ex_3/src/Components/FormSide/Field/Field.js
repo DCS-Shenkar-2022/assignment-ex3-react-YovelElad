@@ -31,7 +31,20 @@ class Field extends Component {
 
     render() {
         switch (this.props.ApplicationState) {
-            case "none":
+            case "edit":
+                return (
+                    <div className="field">
+                        <label>{this.props.children}</label> <br />
+                        <input type="text"
+                            name={this.props.children}
+                            defaultValue={this.props.valueIn}
+                            className={this.props.children}
+                            onChange={(event) => this.saveChanges(event)}
+                        />
+                        <br /><br />
+                    </div>
+                )
+            default:
                 return (
                     <div className="field">
                         <label>{this.props.children}</label> <br />
@@ -39,28 +52,14 @@ class Field extends Component {
                             name={this.props.children}
                             defaultValue=""
                             className={this.props.children}
-                            placeholder={this.props.children} 
-                            onChange={(event) => this.saveChanges(event)}/>
+                            placeholder={this.props.children}
+                            onChange={(event) => this.saveChanges(event)} />
                         <br /><br />
                     </div>
                 )
-                
+
                 // break;
-                case "edit":
-                    return (
-                        <div className="field">
-                            <label>{this.props.children}</label> <br />
-                            <input type="text"
-                                name={this.props.children}
-                                defaultValue={this.props.valueIn}
-                                className={this.props.children}
-                                onChange={(event) => this.saveChanges(event)}
-                            />
-                            <br /><br />
-                        </div>
-                    )
-        
-            default:
+
                 break;
         }
     }
@@ -76,33 +75,33 @@ class Field extends Component {
     // render() {
     //     if (this.props.editing) {
     //         // console.log("field editing");
-            // return (
-            //     <div className="field">
-            //         <label>{this.props.children}</label> <br />
-            //         <input type="text"
-            //             name={this.props.children}
-            //             defaultValue={this.props.valueIn}
-            //             className={this.props.children}
-            //             onChange={(event) => this.someFunc(event)}
-            //         />
-            //         <br /><br />
-            //     </div>
-            // )
+    // return (
+    //     <div className="field">
+    //         <label>{this.props.children}</label> <br />
+    //         <input type="text"
+    //             name={this.props.children}
+    //             defaultValue={this.props.valueIn}
+    //             className={this.props.children}
+    //             onChange={(event) => this.someFunc(event)}
+    //         />
+    //         <br /><br />
+    //     </div>
+    // )
     //     }
     //     else {
     //         // console.log("field Not editing");
-            // return (
-            //     <div className="field">
-            //         <label>{this.props.children}</label> <br />
-            //         <input type="text"
-            //             name={this.props.children}
-            //             defaultValue=""
-            //             className={this.props.children}
-            //             placeholder={this.props.children} 
-            //             onChange={(event) => this.someFunc(event)}/>
-            //         <br /><br />
-            //     </div>
-            // )
+    // return (
+    //     <div className="field">
+    //         <label>{this.props.children}</label> <br />
+    //         <input type="text"
+    //             name={this.props.children}
+    //             defaultValue=""
+    //             className={this.props.children}
+    //             placeholder={this.props.children} 
+    //             onChange={(event) => this.someFunc(event)}/>
+    //         <br /><br />
+    //     </div>
+    // )
     //     }
     // }
 }
