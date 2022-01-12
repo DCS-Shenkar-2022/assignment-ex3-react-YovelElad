@@ -9,7 +9,6 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-
     this.state = {
       vacations: [],
       ApplicationState: "none",
@@ -22,12 +21,11 @@ class App extends Component {
     this.edit = this.edit.bind(this);
     this.delete = this.delete.bind(this);
     this.search = this.search.bind(this);
-
+    this.cancel = this.cancel.bind(this);
   }
 
   edit(_id) {
     if (this.state.ApplicationState == "edit" && this.state.vacationToEdit == _id) {
-
       this.setState(prevState => ({
         ApplicationState: "none",
         vacationToEdit: null
@@ -39,12 +37,9 @@ class App extends Component {
         vacationToEdit: _id,
       }))
     }
-    console.log(this.state.vacations);
   }
 
   add({ _id = null, _name, _location, _price, _image }) {
-    // console.log(_id + " -> " + _name)
-    console.log(_id);
     _id = null;
     this.setState(prevState => ({
       vacations: [
@@ -83,6 +78,12 @@ class App extends Component {
     }))
   }
 
+  cancel() {
+    this.setState(prevState => ({
+      ApplicationState: "none"
+    }))
+  }
+
   delete(id) {
     this.setState(prevState => ({
       vacations: prevState.vacations.filter(vacation => vacation.id !== id)
@@ -96,11 +97,7 @@ class App extends Component {
     }))
   }
 
-
-
   render() {
-    console.log(this.state.vacations);
-
     switch (this.state.ApplicationState) {
       case "none":
         return (
@@ -125,15 +122,16 @@ class App extends Component {
             <ListSide
               ApplicationState={this.state.ApplicationState}
               vacations={this.state.vacations}
+              vacationToEdit={this.state.vacationToEdit}
               onEdit={this.edit}
               onDelete={this.delete}
               onSearch={this.search}
-
             />
             <FormSide
               ApplicationState={this.state.ApplicationState}
               vacationToEdit={this.state.vacations[this.state.vacationToEdit - 1]}
               onUpdate={this.update}
+              onCancel={this.cancel}
             />
           </div>
         )
@@ -162,9 +160,6 @@ class App extends Component {
             />
           </div>
         )
-
-      default:
-        break;
     }
   }
 }

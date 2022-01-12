@@ -10,22 +10,12 @@ class FormSide extends Component {
         super(props)
 
         this.state = {
-            // editing: false,
-
             ApplicationState: props.ApplicationState
         }
-
-
         this.add = this.add.bind(this);
         this.update = this.update.bind(this);
-        // this.componentWillMount = this.componentWillMount.bind(this);
+        this.cancel = this.cancel.bind(this);
     }
-
-    // componentWillMount() {
-    //     this.setState(prevState => ({
-    //         ApplicationState: this.props.ApplicationState
-    //     }))
-    // }
 
     add(newVacation) {
         this.props.onAdd({
@@ -41,22 +31,22 @@ class FormSide extends Component {
         this.props.onUpdate(vacationToUpdate);
     }
 
-
-
-
+    cancel() {
+        this.props.onCancel();
+    }
 
     render() {
         if (document.getElementById("form"))
             document.getElementById("form").reset();
         switch (this.props.ApplicationState) {
             case "edit":
-                // alert(this.props.vacationToEdit.name);
                 return (
                     <div className="FormSide">
                         <Form
                             ApplicationState={this.props.ApplicationState}
                             vacationToEdit={this.props.vacationToEdit}
                             onUpdate={this.update}
+                            onCancel={this.cancel}
                         />
                     </div>
                 )
@@ -70,7 +60,6 @@ class FormSide extends Component {
                         />
                     </div>
                 )
-                break;
         }
     }
 }

@@ -6,15 +6,11 @@ import './ListSide.css';
 class ListSide extends Component {
     constructor(props) {
         super(props);
-        // this.passDetails = this.passDetails.bind(this);
         this.searchVacation = this.searchVacation.bind(this);
-        // this.componentDidMount = this.componentDidMount.bind(this);
         this.edit = this.edit.bind(this);
         this.delete = this.delete.bind(this);
         this.state = {
             vacations: [],
-            // editin: props.editin,
-            // adding: props.adding,
             searching: false,
             searchQuery: ""
         }
@@ -23,10 +19,6 @@ class ListSide extends Component {
     edit(_id) {
         this.props.onEdit(_id);
     }
-
-    // passDetails = (editin, adding, vacation) => {
-    //     this.props.callBack(editin, adding, vacation);
-    // }
 
     searchVacation(_searchQuery) {
         this.setState(prevState => ({
@@ -40,8 +32,6 @@ class ListSide extends Component {
         this.props.onDelete(id);
     }
 
-
-
     render() {
         return(
             <div className="ListSide" >
@@ -53,6 +43,7 @@ class ListSide extends Component {
                 vacations={this.props.vacations}
                 onEdit={this.edit}
                 onDelete={this.delete}
+                vacationToEdit={this.props.vacationToEdit}
                 />
 
             </div>
