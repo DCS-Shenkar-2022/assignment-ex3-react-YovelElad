@@ -61,6 +61,18 @@ class Form extends Component {
             vacationToEdit.location = _location ? _location : this.props.vacationToEdit.location;
             return { vacationToEdit };
         })
+        if (!this.state.vacationToEdit.id) {
+            this.saveId();
+        }
+        if (!this.state.vacationToEdit.name) {
+            this.saveName();
+        }
+        if (!this.state.vacationToEdit.price) {
+            this.savePrice();
+        }
+        if (!this.state.vacationToEdit.image) {
+            this.saveImage();
+        }
     }
 
     savePrice(_price) {
@@ -69,6 +81,18 @@ class Form extends Component {
             vacationToEdit.price = _price ? _price : this.props.vacationToEdit.price;
             return { vacationToEdit };
         })
+        if (!this.state.vacationToEdit.id) {
+            this.saveId();
+        }
+        if (!this.state.vacationToEdit.name) {
+            this.saveName();
+        }
+        if (!this.state.vacationToEdit.location) {
+            this.saveLocation();
+        }
+        if (!this.state.vacationToEdit.image) {
+            this.saveImage();
+        }
     }
 
     saveImage(_image) {
@@ -77,6 +101,18 @@ class Form extends Component {
             vacationToEdit.image = _image ? _image : this.props.vacationToEdit.image;
             return { vacationToEdit };
         })
+        if (!this.state.vacationToEdit.id) {
+            this.saveId();
+        }
+        if (!this.state.vacationToEdit.name) {
+            this.saveName();
+        }
+        if (!this.state.vacationToEdit.location) {
+            this.saveLocation();
+        }
+        if (!this.state.vacationToEdit.price) {
+            this.savePrice();
+        }
     }
 
     addName(_name) {

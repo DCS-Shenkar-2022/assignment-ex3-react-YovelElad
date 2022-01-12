@@ -72,7 +72,8 @@ class App extends Component {
         vacation => vacation.id !== vacationToUpdate.id ? vacation : {
           ...vacation, name: vacationToUpdate.name,
           location: vacationToUpdate.location,
-          price: vacationToUpdate.price
+          price: vacationToUpdate.price,
+          image: vacationToUpdate.image
         }
       )
     }))
